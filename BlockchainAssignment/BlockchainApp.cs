@@ -34,7 +34,7 @@ namespace BlockchainAssignment
             {
                 // getting the info to print from the mini text box to the
                 // actual screen. 
-                richTextBox1.Text = blockchain.getBlockAsString(index);
+                richTextBox1.Text = blockchain.blockToString(index);
             }
         }
 
@@ -78,7 +78,7 @@ namespace BlockchainAssignment
             List<Transaction> transactions = blockchain.getPendingTransactions();
 
             // Create the new block w/ the transactions from the pool
-            Block newBlock = new Block(blockchain.GetLastBlock(), transactions, publicKey.Text);
+            Block newBlock = new Block(blockchain.getPrevBlock(), transactions, publicKey.Text);
 
             // the block w/ transactions is added to the blockchain
             blockchain.Blocks.Add(newBlock);
@@ -105,7 +105,7 @@ namespace BlockchainAssignment
         {
             if (blockchain.Blocks.Count == 1)
             {
-                if (blockchain.ValidateMerkleRoot(blockchain.Blocks[0]))
+                if (blockchain.validateMerkleRoot(blockchain.Blocks[0]))
                 {
                     richTextBox1.Text = "Valid Blockchain";
                 }
@@ -122,8 +122,8 @@ namespace BlockchainAssignment
                 {
 
                     if (blockchain.Blocks[i].prevHash != blockchain.Blocks[i - 1].hash || // hash line check
-                        !blockchain.ValidateMerkleRoot(blockchain.Blocks[i]) || // merkle root check
-                        !blockchain.ValidateHash(blockchain.Blocks[i])) //hash check
+                        !blockchain.validateMerkleRoot(blockchain.Blocks[i]) || // merkle root check
+                        !blockchain.validateHash(blockchain.Blocks[i])) //hash check
                     {
                         richTextBox1.Text = "Invalid Blockchain";
                         return;
@@ -137,7 +137,7 @@ namespace BlockchainAssignment
 
         private void checkBalance_Click(object sender, EventArgs e)
         {
-            richTextBox1.Text = blockchain.GetBalance(publicKey.Text).ToString() + " Assignment ";
+            richTextBox1.Text = blockchain.getBalance(publicKey.Text).ToString() + " Assignment ";
         }
     }
 }

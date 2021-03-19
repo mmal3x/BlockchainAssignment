@@ -137,7 +137,7 @@ namespace BlockchainAssignment
 
             List<String> hashes = transactionsList.Select(t => t.hash).ToList();
 
-            if(hashes.Count == 1)
+            if(hashes.Count == 0)
             {
                 return String.Empty;
             }

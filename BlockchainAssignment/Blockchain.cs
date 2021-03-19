@@ -24,13 +24,13 @@ namespace BlockchainAssignment
 
 
         // verifying the creation of the genesis block by displaying its variables 
-        public String getBlockAsString(int index)
+        public String blockToString(int index)
         {
             return Blocks[index].ToString();
         }
 
         // receivng the info of the previous block for the construction of a new block 
-        public Block GetLastBlock()
+        public Block getPrevBlock()
         {
             return Blocks[Blocks.Count - 1];
         }
@@ -47,10 +47,10 @@ namespace BlockchainAssignment
             return transactions;
         }
 
-        // here we check the hash to see it is equal to that which was
-        // submitted before
+        // here we check the hash of a block to see it is equal to that which was
+        // submitted before.
 
-        public bool ValidateHash(Block b)
+        public bool validateHash(Block b)
         {
             String rehash = b.CreateHash(); // comparing created hash
             return rehash.Equals(b.hash); // with the existing hash 
@@ -59,7 +59,7 @@ namespace BlockchainAssignment
 
         // does the same as the function above but with transactions 
         // within the block
-        public bool ValidateMerkleRoot(Block b)
+        public bool validateMerkleRoot(Block b)
         {
     
             String reMerkle = Block.MerkleRoot(b.transactionsList);
@@ -67,7 +67,7 @@ namespace BlockchainAssignment
         }
 
 
-        public double GetBalance(String address)
+        public double getBalance(String address)
         {
             // need to make sure each block in the chain 
             // sum up each transaction link to and from and 

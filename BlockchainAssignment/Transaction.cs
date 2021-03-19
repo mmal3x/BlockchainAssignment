@@ -18,8 +18,11 @@ namespace BlockchainAssignment
         public double amount;
         DateTime timeStamp;
 
-       
-        
+
+       // Each transaction requires a public key fro which the coins are sent
+       // and a receiver key to which the coins are received. The fee to the 
+       // blockchain must also be paid for mining to occur. Finally, the private key
+       // provides the transaction with a digital signature.
         public Transaction(String from, String to, double amount, double fee, String privateKey)
         {
             this.timeStamp = DateTime.Now; // time the transaction is created. 
@@ -33,7 +36,10 @@ namespace BlockchainAssignment
 
         }
 
-        // lifted from Block.cs
+        // The transaction also needs to be hashed in the same way the block is.
+        // The input string differs as the sender/recipient address, timestamp, 
+        // amount and fee are used to convert the string to a hashed byte array
+        // which is then converted to a string representation.
         public String CreateHash()
         {
             String hash = String.Empty;

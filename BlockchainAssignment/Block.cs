@@ -24,6 +24,7 @@ namespace BlockchainAssignment
         // the nonce is a central part of the proof of work and mining
         // algorithm for blockchains. it is an random no. used just once.
         public long nonce = 0;
+        public long extraNonce = 0; // extra nonce needed for threading
 
         // associated w/ of 0s that would be placed before the string
         // reaches the block hash that is being submitted can start.
@@ -36,7 +37,7 @@ namespace BlockchainAssignment
 
 
         // rewards are fixed, but the fees are not 
-        public double reward = 1.0; // the fixed reward from CB for mining a transaction
+        public double reward = 2.0; // the fixed reward from CB for mining a transaction
         public double fees = 0.0; // counter for summing the transaction fees
         public String minerAddress = String.Empty; // public key address of miner
 
@@ -69,7 +70,7 @@ namespace BlockchainAssignment
             transactions.Add(createRewardTransaction(transactions));
             transactionsList = transactions;
 
-            // // initialising the merkle root and passing it a string
+            // // initialising the merkle root and passing it a string of transactions
             this.merkleRoot = MerkleRoot(transactionsList); 
 
             // / calling the old createHash w/ the new elements 

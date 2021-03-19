@@ -22,12 +22,6 @@ namespace BlockchainAssignment
             richTextBox1.Text = "New Blockchain Initialised.";
         }
 
-        /*
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        } */
-
 
         // print button which gets the string of the block 
         // and places it on the screen

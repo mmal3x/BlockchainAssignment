@@ -29,7 +29,7 @@ namespace BlockchainAssignment
             return Blocks[index].ToString();
         }
 
-        // receivng the info of the previous block in a nice arrangement
+        // receivng the info of the previous block for the construction of a new block 
         public Block GetLastBlock()
         {
             return Blocks[Blocks.Count - 1];

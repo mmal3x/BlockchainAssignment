@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace BlockchainAssignment
@@ -17,6 +18,18 @@ namespace BlockchainAssignment
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new mainWindow());
+
+            Thread th = Thread.CurrentThread; 
+        }
+
+        static void work1()
+        {
+
+        }
+
+        static void work2()
+        {
+
         }
     }
 }
